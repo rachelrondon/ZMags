@@ -6,7 +6,8 @@ class HackerNews extends Component {
 
     this.state = {
       stories: [],
-      ids: []
+      ids: [],
+      theIdList: []
     };
   }
 
@@ -18,27 +19,29 @@ class HackerNews extends Component {
         results.json().then((ids_data) => {
           this.setState({ids: ids_data});
 
-          // let idList = ids_data[Math.floor(Math.random() * (10 - 1 + 1) + 1)];
+        /* I need to put these id's into an array */
+        /* Then I need to put the data that is received from each story into an array that then can be sorted by the score */
+        /* I then need to map over each id and display the information for each id */
+        /* Also, need to be able to use this information to grab the author id */
 
-          let idOne = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idTwo = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idThree = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idFour = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idFive = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idSix = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idSeven = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idEight = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idNine = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
-          let idTen = ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)];
+        let idArray = Array.from({length: 10}, () => ids_data[Math.floor(Math.random() * (500 - 1 + 1) + 1)]);
+        console.log(idArray)
 
-          let theIdList = [idOne, idTwo, idThree, idFour, idFive, idSix, idSeven, idEight, idNine, idTen]
-          console.log(theIdList)
 
-        });
+        for (let i = 0; i < idArray.length; i++) {
+          return fetch('https://hacker-news.firebaseio.com/v0/item/' + idArray[i] + '.json')
+        }
+        })
+        .then((results) => {
+          results.json().then((stories_data) => {
+            this.setState({stories: stories_data})
+            console.log(stories_data)
+          })
+        })
+        .catch(function(error) {
+          console.log('Request failed', error)
+        })
       })
-      .catch((err) => {
-        console.log(err);
-      });
     }
 
 
@@ -47,22 +50,11 @@ class HackerNews extends Component {
       <div>
         <div className="idContainer">
 
-          {/* {this.state.ids.map((theId) => {
-            console.log(theId.id);
-            return(
-              <div key={theId.id} className="idCard">
-                <h1>{theId.id}</h1>
-              </div>
-            )
-          })} */}
-
         </div>
       </div>
     )
   }
 
-  /* This is the closing tag for this component */
   }
-
 
 export default HackerNews;
