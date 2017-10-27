@@ -30,10 +30,10 @@ class HackerNews extends Component {
       sortArray.push(theStoryData[i].score);
       // console.log(sortArray);
 
-      const sortedArray(a, b) => {
-        return b - a;
-      }
-      console.log(sortedArray)
+      // const sortedArray(a, b) => {
+      //   return b - a;
+      // }
+      // console.log(sortedArray)
 
       // console.log(storyInfo.data.score)
       // console.log(theStoryData[i].score)
