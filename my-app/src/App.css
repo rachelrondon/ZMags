@@ -4,24 +4,21 @@
   flex-direction: column;
   padding-top: 10px;
   align-items: center;
-  /* font: Roboto, sans-serif; */
-}
-
-.storyCard {
-  padding-top: 20px;
-}
-
-.storyCard:hover {
-
 }
 
 .singleCard {
 margin-top: 1px;
 }
 
-
 h4 {
   padding-left: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -33,6 +30,5 @@ h4 {
 }
 
 .title-link {
-  margin-top: 20px;
   font-family: 'Roboto', sans-serif;
 }
