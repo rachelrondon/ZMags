@@ -42,6 +42,7 @@ class HackerNews extends Component {
         );
         authorArray.push (authorData.data);
 
+
         for (let i = 0; i < theStoryData.length; i++) {
           for (let j = 0; j < authorArray.length; j++) {
             if (theStoryData[i].by === authorArray[j].id) {
@@ -66,6 +67,7 @@ class HackerNews extends Component {
 
 
         this.setState ({theStoryData: theStoryData});
+
       }
     }
   };
@@ -85,8 +87,7 @@ class HackerNews extends Component {
             }}
           >
             <div  className="nav-bar">
-              <h4 className="logo" titleColor={grey50} style={{ paddingLeft: '10px', fontSize: '15px', color: '#fff', fontFamily: 'Roboto, sans-serif'}}>HACKER NEWS</h4>
-              <FlatButton hoverColor='#333' className="title-link" label='new' href={'/'} style={{ marginTop: '11px', fontFamily: 'Roboto, sans-serif', color: '#f2f2f2', fontSize: '15px'}}/>
+              <FlatButton className="logo" titleColor={grey50} style={{ paddingLeft: '10px', fontSize: '15px', color: '#fff', fontFamily: 'Roboto, sans-serif'}} hoverColor='#333' className="title-link" label='HACKER NEWS' href={'/'} style={{ marginTop: '11px', fontFamily: 'Roboto, sans-serif', color: '#f2f2f2', fontSize: '15px'}}/>
             </div>
           </Card>
 
