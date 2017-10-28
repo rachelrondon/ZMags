@@ -75,46 +75,37 @@ class HackerNews extends Component {
   render () {
     return (
       <div>
-        <div className="cardContainer">
+        <div className="card-container">
 
           <Card
+            className="nav-bar"
             zDepth={1}
             style={{
-              backgroundColor: '#333',
-              height: '50px',
-              width: '950px',
               iconElementLeft: 'none',
+              backgroundColor: '#333',
             }}
           >
-            <div  className="nav-bar">
-              <FlatButton className="logo" titleColor={grey50} style={{ paddingLeft: '10px', fontSize: '15px', color: '#fff', fontFamily: 'Roboto, sans-serif'}} hoverColor='#333' className="title-link" label='HACKER NEWS' href={'/'} style={{ marginTop: '11px', fontFamily: 'Roboto, sans-serif', color: '#f2f2f2', fontSize: '15px'}}/>
-            </div>
+              <FlatButton className="logo" hoverColor='#333' className="title-link" label='HACKER NEWS' href={'/'} style={{ marginTop: '11px', fontFamily: 'Roboto, sans-serif', paddingLeft: '10px', fontSize: '15px', color: '#f2f2f2' }}/>
           </Card>
 
-          <div className="storyCard">
+          <div className="story-card">
             {this.state.theStoryData.map (storydata => {
               return (
                 <div key={storydata.id}>
                   <Card
                     zDepth={1}
-                    className="singleCard"
+                    className="single-card"
                     style={{
-                      width: '950px',
-                      height: '150px',
-                      paddingLeft: '20px',
-                      textAlign: 'left',
-                      color: '#333',
-                      alignContent: 'center',
                       backgroundColor: '#f2f2f2'
                     }}
                   >
-                <CardText>
-                <div className="first-row">
-                <h4>{storydata.number}.</h4><FlatButton className="title-link" label={storydata.title} hoverColor={grey50} href={storydata.url} style={{ marginTop: '9px', fontFamily: 'Roboto, sans-serif'}}/>
-                </div>
+                  <CardText>
+                  <div className="first-row">
+                  <h4>{storydata.number}.</h4><FlatButton className="title-link" label={storydata.title} hoverColor={grey50} href={storydata.url} style={{ marginTop: '9px', fontFamily: 'Roboto, sans-serif'}}/>
+                  </div>
 
-                <h4>Score: {storydata.score} | Author's Id: {storydata.by} | Author's Karma Score: {storydata.karma}  | Timestamp: {storydata.time}</h4>
-                </CardText>
+                  <h4>Score: {storydata.score} | Author's Id: {storydata.by} | Author's Karma Score: {storydata.karma}  | Timestamp: {storydata.time}</h4>
+                  </CardText>
                   </Card>
                 </div>
               );

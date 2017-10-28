@@ -1,24 +1,13 @@
 
-.cardContainer {
+.card-container {
   display: flex;
   flex-direction: column;
   padding-top: 10px;
   align-items: center;
 }
 
-.singleCard {
-margin-top: 1px;
-}
-
 h4 {
   padding-left: 25px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.nav-bar {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -31,4 +20,34 @@ h4 {
 
 .title-link {
   font-family: 'Roboto', sans-serif;
+}
+
+.nav-bar {
+  background-color: '#333';
+  height: 50px;
+  width: 650px;
+}
+
+.single-card {
+  width: 650px;
+  height: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  align-content: center;
+  background-color: '#f2f2f2';
+}
+
+.story-card {
+background-color: '#f2f2f2';
+}
+
+
+@media (max-width: 650px) {
+  .nav-bar {
+    width: 400px;
+  }
+  .single-card {
+    width: 400px;
+  }
 }
