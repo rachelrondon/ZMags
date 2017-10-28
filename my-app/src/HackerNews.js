@@ -5,8 +5,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 import './App.css';
 
-
-
 class HackerNews extends Component {
   constructor(props) {
     super(props);
@@ -63,6 +61,7 @@ class HackerNews extends Component {
 
       console.log(theStoryData);
 
+
       theStoryData.sort((a, b) => {
         return a.score - b.score;
       });
@@ -76,11 +75,15 @@ class HackerNews extends Component {
     return(
       <div>
         <div className="cardContainer">
+        <a label="Ascending"/>
+        <a label="Descending"/>
+
         <div className="storyCard">
        {this.state.theStoryData.map((storydata) => {
           return(
             <div key={storydata.id}>
             <Card
+            zDepth={1}
             className="singleCard"
             style={{
               width: '1200px',
@@ -88,7 +91,8 @@ class HackerNews extends Component {
               paddingTop: '40px',
               paddingLeft: '20px',
               textAlign: 'center',
-              color: '#333'
+              color: '#333',
+
             }}>
               <CardText>
               <h1>{storydata.title}</h1>
