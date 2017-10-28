@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import './App.css';
+
+
 
 class HackerNews extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      stories: [],
-      ids: [],
-      theIdList: [],
       theStoryData: [],
-      authorName: [],
-      authorArray: [],
-      karmaScore:[],
+      shadow: 1,
     };
   }
 
@@ -26,8 +27,6 @@ class HackerNews extends Component {
     for (let i = 0; i < idArray.length; i++) {
       const storyInfo = await axios.get('https://hacker-news.firebaseio.com/v0/item/' + idArray[i] + '.json');
       theStoryData.push(storyInfo.data)
-
-      // console.log(storyInfo.data.by);
 
       theStoryData.sort((a, b) => {
         return b.score - a.score;
@@ -65,32 +64,49 @@ class HackerNews extends Component {
       console.log(theStoryData);
 
       theStoryData.sort((a, b) => {
-        return b.score - a.score;
+        return a.score - b.score;
       });
 
-      // this.setState({authorArray: authorArray})
       this.setState({theStoryData: theStoryData})
       }
-
     }
 
 
   render(){
     return(
       <div>
-        <div className="idContainer">
+        <div className="cardContainer">
+        <div className="storyCard">
        {this.state.theStoryData.map((storydata) => {
           return(
             <div key={storydata.id}>
-              <h1>Title: {storydata.title}</h1>
-              <h1>URL: {storydata.url}</h1>
-              <h1>Timestamp: {storydata.time}</h1>
-              <h1>Score: {storydata.score}</h1>
-              <h1>Author Id: {storydata.by}</h1>
-              <h1>Karma Score: {storydata.karma}</h1>
+            <Card
+            className="singleCard"
+            style={{
+              width: '1200px',
+              height: '400px',
+              paddingTop: '40px',
+              paddingLeft: '20px',
+              textAlign: 'center',
+              color: '#333'
+            }}>
+              <CardText>
+              <h1>{storydata.title}</h1>
+              <hr />
+              <h2>Score: {storydata.score}</h2>
+              <h3>Author's Id: {storydata.by}</h3>
+              <h3>Author's Karma Score: {storydata.karma}</h3>
+              <h3>Timestamp: {storydata.time}</h3>
+              </CardText>
+              <hr />
+              <CardActions>
+              <FlatButton label="link" href={storydata.url}/>
+              </CardActions>
+            </Card>
             </div>
           )
         })}
+        </div>
         </div>
       </div>
     )
