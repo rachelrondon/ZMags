@@ -2,7 +2,7 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 10px;
   align-items: center;
   /* font: Roboto, sans-serif; */
 }
@@ -16,5 +16,11 @@
 }
 
 .singleCard {
-margin-top: 20px;
+margin-top: 1px;
+}
+
+
+h4 {
+  padding-left: 25px;
+  font: Roboto, sans-serif;
 }

@@ -4,6 +4,9 @@ import axios from "axios";
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import './App.css';
+import AppBar from 'material-ui/AppBar';
+import {grey50} from 'material-ui/styles/colors'
+
 
 class HackerNews extends Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class HackerNews extends Component {
     this.state = {
       theStoryData: [],
       shadow: 1,
+      count: 0,
     };
   }
 
@@ -50,6 +54,10 @@ class HackerNews extends Component {
 
         // console.log(authorData)
 
+
+      let count = 0;
+
+
         for (let i = 0; i < theStoryData.length; i++) {
           for (let j = 0; j < authorArray.length; j++) {
             if (theStoryData[i].by === authorArray[j].id) {
@@ -57,26 +65,46 @@ class HackerNews extends Component {
             }
           }
         }
-      }
 
-      console.log(theStoryData);
 
+      this.setState({ count: count })
 
       theStoryData.sort((a, b) => {
         return a.score - b.score;
       });
 
+
       this.setState({theStoryData: theStoryData})
+
       }
     }
-
+  }
 
   render(){
     return(
       <div>
         <div className="cardContainer">
-        <a label="Ascending"/>
-        <a label="Descending"/>
+
+      <Card
+      style={{
+        backgroundColor:'#333',
+        height: '34px',
+        width: '85%',
+        iconElementLeft: 'none',
+      }}
+      >
+      <CardHeader
+      title="Hacker News"
+      titleColor={grey50}
+      style={{
+        paddingLeft: '10px',
+      }}
+      >
+
+
+      </CardHeader>
+
+      </Card>
 
         <div className="storyCard">
        {this.state.theStoryData.map((storydata) => {
@@ -87,25 +115,26 @@ class HackerNews extends Component {
             className="singleCard"
             style={{
               width: '1200px',
-              height: '400px',
-              paddingTop: '40px',
+              height: '135px',
               paddingLeft: '20px',
-              textAlign: 'center',
+              textAlign: 'left',
               color: '#333',
 
             }}>
               <CardText>
-              <h1>{storydata.title}</h1>
-              <hr />
-              <h2>Score: {storydata.score}</h2>
-              <h3>Author's Id: {storydata.by}</h3>
-              <h3>Author's Karma Score: {storydata.karma}</h3>
-              <h3>Timestamp: {storydata.time}</h3>
-              </CardText>
-              <hr />
               <CardActions>
-              <FlatButton label="link" href={storydata.url}/>
+                <FlatButton
+                label={storydata.title}
+                href={storydata.url}
+                hoverColor={grey50}
+                style={{
+                  fontSize: '40px'
+                }}
+
+                />
               </CardActions>
+              <h4>Score: {storydata.score} | Author's Id: {storydata.by} | Author's Karma Score: {storydata.karma} | Timestamp: {storydata.time}</h4>
+              </CardText>
             </Card>
             </div>
           )

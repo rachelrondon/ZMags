@@ -10,7 +10,6 @@ class App extends Component {
       <div>
         <MuiThemeProvider>
           <div>
-          <AppBarComponent />
           <HackerNews />
           </div>
 
