@@ -22,5 +22,17 @@ margin-top: 1px;
 
 h4 {
   padding-left: 25px;
-  font: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-link {
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
 }

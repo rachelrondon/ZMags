@@ -54,6 +54,17 @@ class HackerNews extends Component {
           return a.score - b.score;
         });
 
+        let numbers = [1,2,3,4,5,6,7,8,9,10];
+
+        for (let i = 0; i < theStoryData.length; i++) {
+          for (let j = 0; j < numbers.length; j++) {
+            theStoryData[i].number = numbers[i];
+          }
+        }
+
+        console.log(theStoryData);
+
+
         this.setState ({theStoryData: theStoryData});
       }
     }
@@ -68,7 +79,7 @@ class HackerNews extends Component {
             style={{
               backgroundColor: '#333',
               height: '34px',
-              width: '85%',
+              width: '950px',
               iconElementLeft: 'none',
             }}
           >
@@ -90,25 +101,21 @@ class HackerNews extends Component {
                     zDepth={1}
                     className="singleCard"
                     style={{
-                      width: '1200px',
-                      height: '135px',
+                      width: '950px',
+                      height: '150px',
                       paddingLeft: '20px',
                       textAlign: 'left',
                       color: '#333',
+                      alignContent: 'center'
                     }}
                   >
-                    <CardText>
-                      <CardActions>
-                        <FlatButton
-                          label={storydata.title}
-                          href={storydata.url}
-                          hoverColor={grey50}
-                        />
-                      </CardActions>
-                      <h4>Score: {storydata.score} | Author's Id:{storydata.by}
-                        | Author's Karma Score:{storydata.karma}  | Timestamp:{storydata.time}
-                      </h4>
-                    </CardText>
+                <CardText>
+                <div className="first-row">
+                <h4>{storydata.number}.</h4><FlatButton className="title-link" label={storydata.title} hoverColor={grey50} href={storydata.url} style={{ marginTop: '9px', fontFamily: 'Roboto, sans-serif'}}/>
+                </div>
+
+                <h4>Score: {storydata.score} | Author's Id:{storydata.by} | Author's Karma Score:{storydata.karma}  | Timestamp:{storydata.time}</h4>
+                </CardText>
                   </Card>
                 </div>
               );
