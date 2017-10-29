@@ -70,7 +70,7 @@ class HackerNews extends Component {
       }
     }
 
-    // console.log (theStoryData);
+    console.log (theStoryData);
 
     this.setState ({theStoryData: theStoryData});
   };
