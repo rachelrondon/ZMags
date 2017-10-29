@@ -2,7 +2,8 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   align-items: center;
 }
 
@@ -44,7 +45,7 @@ h4 {
 
 .single-card {
   width: 1000px;
-  height: 275px;
+  height: 250px;
   text-align: left;
   align-content: center;
   background-color: '#f2f2f2';
