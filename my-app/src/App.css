@@ -284,6 +284,80 @@ a {
   }
 }
 
+@media (max-width: 475px) {
+  .nav-bar {
+    width: 375px;
+  }
+  .single-card {
+    width: 375px;
+  }
+}
+
+@media (max-width: 450px) {
+  .nav-bar {
+    width: 350px;
+  }
+  .single-card {
+    width: 350px;
+  }
+}
+
+@media (max-width: 425px) {
+  .nav-bar {
+    width: 325px;
+  }
+  .single-card {
+    width: 325px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-bar {
+    width: 300px;
+  }
+  .single-card {
+    width: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav-bar {
+    width: 275px;
+  }
+  .single-card {
+    width: 275px;
+  }
+}
+
+@media (max-width: 350px) {
+  .nav-bar {
+    width: 250px;
+  }
+  .single-card {
+    width: 250px;
+  }
+}
+
+@media (max-width: 325px) {
+  .nav-bar {
+    width: 225px;
+  }
+  .single-card {
+    width: 225px;
+  }
+}
+
+@media (max-width: 300px) {
+  .nav-bar {
+    width: 200px;
+  }
+  .single-card {
+    width: 200px;
+  }
+}
+
+
+
 
 
 
