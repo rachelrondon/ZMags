@@ -55,8 +55,7 @@ class HackerNews extends Component {
         }
       }
     }
-  /* The stories array is sorted by the score value;
-    the stories will be listed in ascending order based on the story score */
+  /* The stories array is sorted by the score value; the stories will be listed in ascending order based on the story score */
     stories.sort((a, b) => {
       return a.score - b.score;
     });

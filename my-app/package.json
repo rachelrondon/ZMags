@@ -4,16 +4,33 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.0",
+    "enzyme": "^3.1.0",
+    "jest": "^21.2.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^15.3.2",
     "react-scripts": "1.0.14",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "babel-jest": "*",
+    "jest-cli": "*"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ]
   }
 }
