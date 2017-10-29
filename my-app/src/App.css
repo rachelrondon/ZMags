@@ -35,6 +35,10 @@ h4 {
   text-decoration: underline;
 }
 
+body {
+  background-color: '#f2f2f2';
+}
+
 .nav-bar {
   background-color: '#333';
   height: 50px;
@@ -48,8 +52,7 @@ h4 {
   height: 250px;
   text-align: left;
   align-content: center;
-  background-color: '#f2f2f2';
-
+  background-color: 'white';
 }
 
 .story-card {
