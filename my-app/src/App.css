@@ -1,15 +1,15 @@
 
+h4 {
+  padding-left: 25px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
   padding-top: 15px;
   padding-bottom: 15px;
   align-items: center;
-}
-
-h4 {
-  padding-left: 25px;
-  font-family: 'Roboto', sans-serif;
 }
 
 .first-row {
