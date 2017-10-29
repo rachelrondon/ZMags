@@ -10,67 +10,59 @@ class HackerNews extends Component {
     super (props);
 
     this.state = {
-      theStoryData: [],
       stories: [],
     };
   }
 
   componentDidMount = async () => {
-    let theStoryData = [];
-    let authorName = [];
-    let authorArray = [];
 
-    const results = await axios.get (
-      'https://hacker-news.firebaseio.com/v0/topstories.json'
-    );
-    let idArray = Array.from (
-      {length: 10},
-      () => results.data[Math.floor (Math.random () * (100 - 1 + 1) + 1)]
-    );
+    let baseURL = 'https://hacker-news.firebaseio.com/v0'
+    let stories = [];
+    let authors = [];
+    let authorDetails = [];
 
-    for (let i = 0; i < idArray.length; i++) {
-      const storyInfo = await axios.get (
-        'https://hacker-news.firebaseio.com/v0/item/' + idArray[i] + '.json'
-      );
-      theStoryData.push (storyInfo.data);
-      authorName.push (storyInfo.data.by);
+    const results = await axios.get (`${baseURL}/topstories.json`);
+    let ids = Array.from ({length: 10},() => results.data[Math.floor (Math.random () * (100 - 1 + 1) + 1)]);
+
+    for (let id of ids) {
+      let idVariable = id;
+      const storyInfo = await axios.get (`${baseURL}/item/${idVariable}.json`);
+      stories.push(storyInfo.data);
+      authors.push(storyInfo.data.by);
     }
 
-    for (let i = 0; i < authorName.length; i++) {
-      const authorData = await axios.get (
-        'https://hacker-news.firebaseio.com/v0/user/' + authorName[i] + '.json'
-      );
-      authorArray.push (authorData.data);
+    for (let author of authors) {
+      let authorVariable = author;
+      const authorData = await axios.get (`${baseURL}/user/${authorVariable}.json`);
+      authorDetails.push (authorData.data);
     }
 
-    for (let i = 0; i < theStoryData.length; i++) {
-      for (let j = 0; j < authorArray.length; j++) {
-        if (theStoryData[i].by === authorArray[j].id) {
-          theStoryData[i].karma = authorArray[j].karma;
+    for (let story of stories) {
+      for (let authorDetail of authorDetails) {
+        if (story.by === authorDetail.id) {
+          story.karma = authorDetail.karma;
         }
       }
     }
 
-    theStoryData.sort ((a, b) => {
+    stories.sort((a, b) => {
       return a.score - b.score;
     });
 
-
-    for (let i = 0; i < theStoryData.length; i++) {
-      theStoryData[i].updatedTitle = theStoryData[i].title.toUpperCase();
-      theStoryData[i].updatedBy = theStoryData[i].by.toUpperCase();
+    for (let story of stories) {
+      story.updatedTitle = story.title.toUpperCase();
+      story.updatedBy = story.by.toUpperCase();
     }
-
 
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    for (let i = 0; i < theStoryData.length; i++) {
+    for (let i = 0; i < stories.length; i++) {
       for (let j = 0; j < numbers.length; j++) {
-        theStoryData[i].number = numbers[i];
+        stories[i].storyNumber = numbers[i];
       }
     }
 
-    this.setState ({theStoryData: theStoryData});
+    this.setState ({stories: stories});
   };
 
   render () {
@@ -103,9 +95,9 @@ class HackerNews extends Component {
           </Card>
 
           <div className="story-card">
-            {this.state.theStoryData.map (storydata => {
+            {this.state.stories.map (story => {
               return (
-                <div key={storydata.id}>
+                <div key={story.id}>
                   <Card
                     zDepth={1}
                     className="single-card"
@@ -115,17 +107,16 @@ class HackerNews extends Component {
                   >
                     <CardText>
                       <div className="first-row">
-                        <h4>{storydata.number}.</h4><h4>{storydata.updatedTitle}</h4>
+                        <h4>{story.storyNumber}.</h4><h4>{story.updatedTitle}</h4>
                       </div>
                       <div className="story-url">
-                        <a className="url" href={storydata.url}>{storydata.url}</a>
+                        <a className="url" href={story.url}>{story.url}</a>
                       </div>
                       <div className="story-info">
-
-                        <h4>SCORE: {storydata.score} </h4>
-                        <h4>AUTHOR'S ID: {storydata.updatedBy} </h4>
-                        <h4>AUTHOR'S KARMA SCORE: {storydata.karma}</h4>
-                        <h4>TIMESTAMP: {storydata.time}</h4>
+                        <h4>SCORE: {story.score} </h4>
+                        <h4>AUTHOR'S ID: {story.updatedBy} </h4>
+                        <h4>AUTHOR'S KARMA SCORE: {story.karma}</h4>
+                        <h4>TIMESTAMP: {story.time}</h4>
                       </div>
                     </CardText>
                   </Card>
