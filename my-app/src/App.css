@@ -14,25 +14,38 @@ h4 {
 .first-row {
   display: flex;
   flex-direction: row;
-  text-align: center;
+  align-content: center;
   font-family: 'Roboto', sans-serif;
+  margin-bottom: -35px;
 }
 
 .title-link {
   font-family: 'Roboto', sans-serif;
 }
 
+.story-url {
+  padding-left: 63px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  word-wrap: normal;
+}
+
+.story-url:hover {
+  text-decoration: underline;
+  word-wrap: break-word;
+}
+
 .nav-bar {
   background-color: '#333';
   height: 50px;
   width: 650px;
+  text-align: left;
+  padding-left: 15px;
 }
 
 .single-card {
   width: 650px;
-  height: 150px;
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 250px;
   text-align: left;
   align-content: center;
   background-color: '#f2f2f2';
@@ -42,6 +55,17 @@ h4 {
 background-color: '#f2f2f2';
 }
 
+.story-info {
+  padding-left: 40px;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+}
+.url {
+  color:black;
+}
 
 @media (max-width: 650px) {
   .nav-bar {
@@ -51,3 +75,5 @@ background-color: '#f2f2f2';
     width: 400px;
   }
 }
+
+

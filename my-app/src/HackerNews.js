@@ -55,6 +55,13 @@ class HackerNews extends Component {
       return a.score - b.score;
     });
 
+
+    for (let i = 0; i < theStoryData.length; i++) {
+      theStoryData[i].updatedTitle = theStoryData[i].title.toUpperCase();
+      theStoryData[i].updatedBy = theStoryData[i].by.toUpperCase();
+    }
+
+
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     for (let i = 0; i < theStoryData.length; i++) {
@@ -63,7 +70,7 @@ class HackerNews extends Component {
       }
     }
 
-    console.log (theStoryData);
+    // console.log (theStoryData);
 
     this.setState ({theStoryData: theStoryData});
   };
@@ -110,36 +117,18 @@ class HackerNews extends Component {
                   >
                     <CardText>
                       <div className="first-row">
-                        <h4>{storydata.number}.</h4>
-                        <FlatButton
-                          className="title-link"
-                          label={storydata.title}
-                          hoverColor={grey50}
-                          href={storydata.url}
-                          style={{
-                            marginTop: '9px',
-                            fontFamily: 'Roboto, sans-serif',
-                          }}
-                        />
+                        <h4>{storydata.number}.</h4><h4>{storydata.updatedTitle}</h4>
                       </div>
+                      <div className="story-url">
+                        <a className="url" href={storydata.url}>{storydata.url}</a>
+                      </div>
+                      <div className="story-info">
 
-                      <h4>
-                        Score:
-                        {' '}
-                        {storydata.score}
-                        {' '}
-                        | Author's Id:
-                        {' '}
-                        {storydata.by}
-                        {' '}
-                        | Author's Karma Score:
-                        {' '}
-                        {storydata.karma}
-                        {' '}
-                        | Timestamp:
-                        {' '}
-                        {storydata.time}
-                      </h4>
+                        <h4>SCORE: {storydata.score} </h4>
+                        <h4>AUTHOR'S ID: {storydata.updatedBy} </h4>
+                        <h4>AUTHOR'S KARMA SCORE: {storydata.karma}</h4>
+                        <h4>TIMESTAMP: {storydata.time}</h4>
+                      </div>
                     </CardText>
                   </Card>
                 </div>
