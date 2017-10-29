@@ -85,27 +85,9 @@ class HackerNews extends Component {
       <div>
         <div className="card-container">
 
-          <Card
-            className="nav-bar"
-            zDepth={1}
-            style={{
-              iconElementLeft: 'none',
-              backgroundColor: '#333',
-            }}
-          >
-            <FlatButton
-              className="logo"
-              hoverColor="#333"
-              className="title-link"
-              label="HACKER NEWS"
-              href={'/'}
-              style={{
-                marginTop: '11px',
-                fontFamily: 'Roboto, sans-serif',
-                paddingLeft: '10px',
-                fontSize: '15px',
-                color: '#f2f2f2',
-              }}
+          <Card className="nav-bar" style={{ iconElementLeft: 'none', backgroundColor: '#333'}}>
+            <FlatButton className="logo" hoverColor="#333" className="title-link" label="HACKER NEWS" href={'/'}
+              style={{ marginTop: '11px', fontFamily: 'Roboto, sans-serif', paddingLeft: '10px', fontSize: '15px', color: '#f2f2f2'}}
             />
           </Card>
 
@@ -113,13 +95,7 @@ class HackerNews extends Component {
             {this.state.stories.map (story => {
               return (
                 <div key={story.id}>
-                  <Card
-                    zDepth={1}
-                    className="single-card"
-                    style={{
-                      backgroundColor: '#f2f2f2',
-                    }}
-                  >
+                  <Card className="single-card" style={{ backgroundColor: '#f2f2f2'}}>
                     <CardText>
                       <div className="first-row">
                         <h4>{story.storyNumber}.</h4><h4>{story.updatedTitle}</h4>
