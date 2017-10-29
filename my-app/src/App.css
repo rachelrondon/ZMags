@@ -27,12 +27,11 @@ h4 {
   padding-left: 63px;
   margin-bottom: 20px;
   padding-top: 20px;
-  word-wrap: normal;
+  word-wrap: break-word;
 }
 
 .story-url:hover {
   text-decoration: underline;
-  word-wrap: break-word;
 }
 
 .nav-bar {
@@ -45,10 +44,11 @@ h4 {
 
 .single-card {
   width: 650px;
-  height: 250px;
+  height: 275px;
   text-align: left;
   align-content: center;
   background-color: '#f2f2f2';
+
 }
 
 .story-card {
