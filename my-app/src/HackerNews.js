@@ -94,7 +94,7 @@ class HackerNews extends Component {
             {this.state.stories.map (story => {
               return (
                 <div key={story.id}>
-                  <Card className="single-card" style={{ backgroundColor: '#f2f2f2'}}>
+                  <Card className="single-card" style={{ backgroundColor: '#ffffff'}}>
                     <CardText>
                       <div className="first-row">
                         <h4>{story.storyNumber}.</h4><h4>{story.updatedTitle}</h4>
