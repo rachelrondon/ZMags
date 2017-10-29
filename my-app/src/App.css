@@ -36,7 +36,7 @@ h4 {
 }
 
 body {
-  background-color: '#f2f2f2';
+  color: '#f2f2f2';
 }
 
 .nav-bar {
@@ -52,7 +52,7 @@ body {
   height: 250px;
   text-align: left;
   align-content: center;
-  background-color: 'white';
+  background-color: '#ffffff';
 }
 
 .story-card {
