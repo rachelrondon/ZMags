@@ -11,6 +11,7 @@ class HackerNews extends Component {
 
     this.state = {
       theStoryData: [],
+      stories: [],
     };
   }
 
@@ -20,57 +21,50 @@ class HackerNews extends Component {
     let authorName = [];
     let authorArray = [];
 
-    const results = await axios.get ('https://hacker-news.firebaseio.com/v0/topstories.json');
 
+    const results = await axios.get('https://hacker-news.firebaseio.com/v0/topstories.json');
     let idArray = Array.from ({length: 10}, () => results.data[Math.floor (Math.random () * (100 - 1 + 1) + 1)]);
-
-    console.log(idArray);
 
     for (let i = 0; i < idArray.length; i++) {
       const storyInfo = await axios.get ('https://hacker-news.firebaseio.com/v0/item/' + idArray[i] + '.json');
-
       theStoryData.push(storyInfo.data);
-
-
       authorName.push(storyInfo.data.by);
-
-      for (let i = 0; i < authorName.length; i++) {
-        const authorData = await axios.get (
-          'https://hacker-news.firebaseio.com/v0/user/' +
-            authorName[i] +
-            '.json'
-        );
-        authorArray.push (authorData.data);
+    }
 
 
-        for (let i = 0; i < theStoryData.length; i++) {
-          for (let j = 0; j < authorArray.length; j++) {
-            if (theStoryData[i].by === authorArray[j].id) {
-              theStoryData[i].karma = authorArray[j].karma;
-            }
-          }
+    for (let i = 0; i < authorName.length; i++) {
+    const authorData = await axios.get('https://hacker-news.firebaseio.com/v0/user/' + authorName[i] +'.json');
+    authorArray.push (authorData.data);
+
+  }
+
+    for (let i = 0; i < theStoryData.length; i++) {
+      for (let j = 0; j < authorArray.length; j++) {
+        if (theStoryData[i].by === authorArray[j].id) {
+          theStoryData[i].karma = authorArray[j].karma;
         }
-
-        theStoryData.sort ((a, b) => {
-          return a.score - b.score;
-        });
-
-        let numbers = [1,2,3,4,5,6,7,8,9,10];
-
-        for (let i = 0; i < theStoryData.length; i++) {
-          for (let j = 0; j < numbers.length; j++) {
-            theStoryData[i].number = numbers[i];
-          }
-        }
-
-        console.log(theStoryData);
-
-
-        this.setState ({theStoryData: theStoryData});
-
       }
     }
-  };
+
+    theStoryData.sort ((a, b) => {
+      return a.score - b.score;
+    });
+
+    let numbers = [1,2,3,4,5,6,7,8,9,10];
+
+    for (let i = 0; i < theStoryData.length; i++) {
+      for (let j = 0; j < numbers.length; j++) {
+        theStoryData[i].number = numbers[i];
+      }
+    }
+
+    console.log(theStoryData);
+
+
+    this.setState ({theStoryData: theStoryData});
+
+    }
+
 
   render () {
     return (
