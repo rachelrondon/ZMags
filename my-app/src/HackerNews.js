@@ -15,13 +15,13 @@ class HackerNews extends Component {
 
   componentDidMount = async () => {
   /* A variable for the base url that will be used within the three api calls is defined */
-    let baseURL = 'https://hacker-news.firebaseio.com/v0'
+    let Url = 'https://hacker-news.firebaseio.com/v0'
   /* Three arrays are declared */
     let stories = [];
     let authors = [];
     let authorDetails = [];
   /* The first API call is created that will return top stories ids from the Hacker News API */
-    const results = await axios.get (`${baseURL}/topstories.json`);
+    const results = await axios.get (`${Url}/topstories.json`);
   /* The data received from the previous api call is filtered and an array of randomized 10 top stories are returned */
     let ids = Array.from ({length: 10},() => results.data[Math.floor (Math.random () * (100 - 1 + 1) + 1)]);
   /* A loop iterating over the ids array is created */
@@ -29,7 +29,7 @@ class HackerNews extends Component {
   /* The variable idVariable is defined as the iteration of the ids array */
       let idVariable = id;
   /* The second api call is declared that will return data that contains information about each story */
-      const storyInfo = await axios.get (`${baseURL}/item/${idVariable}.json`);
+      const storyInfo = await axios.get (`${Url}/item/${idVariable}.json`);
   /* The data returned from the second api call is pushed into the stories array */
       stories.push(storyInfo.data);
   /* The specific data regarding the author's id is pushed into the author's array */
@@ -40,7 +40,7 @@ class HackerNews extends Component {
   /* The variable authorVariable is defined as the iteration of the authors array */
       let authorVariable = author;
   /* The third api call is declared that will return data that contains information about each author */
-      const authorData = await axios.get (`${baseURL}/user/${authorVariable}.json`);
+      const authorData = await axios.get (`${Url}/user/${authorVariable}.json`);
   /* The data returned from the third api call is pushed into the authorDetails array */
       authorDetails.push (authorData.data);
     }
