@@ -11,9 +11,9 @@ Deployment Instructions:
 
 ### Testing
 
-I utilized the Sinon.JS (http://sinonjs.org/) unit testing framework to write tests for this application. I decided on this framework because I was able to find a lot of resources that showed that Sinon.JS is a great tool to test asynchronous functions. In addition to the documentation, I also reviewed the tutorial posted by Josh Newman on YouTube (https://www.youtube.com/watch?v=09Lig2mlZS0).
+I utilized the Sinon.JS (http://sinonjs.org/) unit testing framework to write tests for this application. I decided on this framework because I was able to find a lot of resources that confirmed Sinon.JS is a great tool to test asynchronous functions. In addition to the documentation, I also reviewed the tutorial posted by Josh Newman on YouTube (https://www.youtube.com/watch?v=09Lig2mlZS0).
 
-I have written three basic tests for this application. At the time of submission, I have been troubleshooting babel compiler issues and I have been unable to run the tests. Once these issues are resolved I would like to build out the tests for this application further.
+The tests for this application are in progress. I am unbale to run the tests based on an issue that I have been troubleshooting with the Babel compiler.
 
 ## Technologies
 
@@ -21,7 +21,7 @@ I have written three basic tests for this application. At the time of submission
     "jest": "^21.2.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
-    "sinon-test": "^2.1.1",
+    "sinon-test": "^2.1.1"
 
 ## Author
 
